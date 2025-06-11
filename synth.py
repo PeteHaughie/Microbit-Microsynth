@@ -167,7 +167,16 @@ while True:
         # music.stop()
 
         if soundmatrix[bar][track] != 0:
-            music.play(soundmatrix[bar][track])
+            note_map = {
+                'c1:4': (262, 150),
+                'e:2': (330, 100),
+                'g': (392, 100),
+                'c2:4': (523, 150)
+            }
+            note = soundmatrix[bar][track]
+            if note in note_map:
+                pitch, duration = note_map[note]
+                music.pitch(pitch, duration)
         # Updates all done? Great! Now increment the track value
         if track == 3:
             track = 0
